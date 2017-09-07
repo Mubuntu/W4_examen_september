@@ -6,3 +6,7 @@ class RecipeForm(forms.Form):
     amount_cal = forms.CharField('amount_cal', max_length=10)
     time = forms.DecimalField(min(0))
     ingredients = forms.TextInput()
+
+    def __unicode__(self):
+        return self.recipe
+

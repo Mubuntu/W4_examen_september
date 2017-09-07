@@ -14,10 +14,16 @@ def get_recipe(request):
         amount_cal = form.amount_cal
         time = form.time
         recipe_name = form.recipe
-        ingredients=form.ingredients
+        ingredients = form.ingredients
         if form.is_valid():
-            recipes.insert({'recipe': recipe_name, 'time': time,'amount calories': amount_cal, "ingredients": ingredients})
+            recipes.insert(
+                {'recipe': recipe_name, 'time': time, 'amount calories': amount_cal, "ingredients": ingredients})
             return render(request, 'recipes/recipes.html', {'recipes': recipes})
         else:
             form = RecipeForm()
-            return render(request, 'index.html', {'form': form})
+            return render(request, 'recipes/index.html', {'form': form})
+
+
+def get_recipes(request):
+    if (request.method == 'GET'):
+        return render(request, 'recipes/recipes.html', {'recipes': recipes})
