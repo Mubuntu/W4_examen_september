@@ -6,5 +6,6 @@ recipes = db.recipes
 
 # Create your views here.
 def index(request):
+    for recipe in recipes.find():
 
     return render(request, 'recipes/index.html', {'recipes': recipes})
